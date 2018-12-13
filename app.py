@@ -56,15 +56,6 @@ def metadata(sample):
     json_selected_sample = selected_sample.to_json(orient='records')
     return json_selected_sample
 
-@app.route('/wfreq/<sample>')
-def wfreq(sample):
-    all_samples_metadata = session.query(Metadata).statement
-    all_samples_metadata_df = pd.read_sql_query(all_samples_metadata, session.bind)
-    sample_num = int(sample.split("_")[1])
-    selected_sample = all_samples_metadata_df.loc[all_samples_metadata_df["SAMPLEID"] == sample_num, :]
-    wfreq = selected_sample["WFREQ"].values[0]
-    return f"{wfreq}"
-
 @app.route('/samples/<sample>')
 def samples(sample):
     all_otus = session.query(OTU).statement
