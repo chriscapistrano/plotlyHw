@@ -15,7 +15,7 @@ function init(){
 
 init();
 
-function optionChanged(sample){
+function update(sample){
     pie(sample);
     bubble(sample);
     updateMetadata(sample);
@@ -106,6 +106,6 @@ function updateMetadata(sample){
     });
 };
 
-optionChanged("BB_940");
+update("BB_940");
 
 
